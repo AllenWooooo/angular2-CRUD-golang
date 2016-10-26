@@ -1,0 +1,57 @@
+<div class="users-table">
+  <table class="table">
+    <colgroup>
+      <col>
+      <col>
+      <col width="100">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Balance</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users" [ngSwitch]="user.modifying">
+        <template ngSwitchDefault>
+          <td>{{user.name}}</td>
+          <td>{{user.balance}}</td>
+          <td>
+            <a (click)="modify(user)"><i class="fa fa-pencil"></i></a>
+            <a class="color-red" (click)="remove(user.id)"><i class="fa fa-trash-o"></i></a>
+          </td>
+        </template>
+        <template [ngSwitchCase]="true">
+          <td>
+            <input type="text" class="input"
+              [(ngModel)]="user.name">
+          </td>
+          <td>
+            <input type="number" class="input"
+              [(ngModel)]="user.balance">
+          </td>
+          <td>
+            <a class="color-green" (click)="update(user)"><i class="fa fa-check"></i></a>
+            <a class="color-red" (click)="cancel(user)"><i class="fa fa-remove"></i></a>
+          </td>
+        </template>
+      </tr>
+      <tr *ngIf="creating">
+        <td>
+          <input type="text" class="input"
+            [(ngModel)]="newUser.name">
+        </td>
+        <td>
+          <input type="number" class="input"
+            [(ngModel)]="newUser.balance">
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="create-btn"
+    (click)="create()"
+    [class.cancel]="!newUser.name && creating"
+    [class.ok]="newUser.name && creating"></button>
+</div>
