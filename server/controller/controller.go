@@ -8,7 +8,7 @@ import (
 )
 
 func Init(mux *http.ServeMux, session *mgo.Session) {
-	db := session.DB("lunch_group")
+	db := session.DB("crud_demo")
 
 	users.Init(mux, db)
 }

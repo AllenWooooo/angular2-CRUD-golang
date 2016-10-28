@@ -14,14 +14,14 @@ module.exports = webpackMerge(commonConfig, {
   },
 
   plugins: [
-    new ExtractTextPlugin('[name].css')
+    new ExtractTextPlugin('/assets/[name].css')
   ],
 
   devServer: {
     historyApiFallback: true,
     stats: 'minimal',
     proxy: {
-      "**": "http://localhost:8080"
+      '**': 'http://localhost:8080'
     },
   }
 });

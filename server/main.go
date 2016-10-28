@@ -19,7 +19,10 @@ func main() {
 	session.SetMode(mgo.Monotonic, true)
 
 	mux := http.NewServeMux()
-	mux.Handle("/", http.FileServer(http.Dir("../static/")))
+	mux.Handle("/assets/", http.FileServer(http.Dir("../static/")))
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "../static/index.html")
+	})
 
 	controller.Init(mux, session)
 	log.Fatal(http.ListenAndServe("localhost:8080", mux))

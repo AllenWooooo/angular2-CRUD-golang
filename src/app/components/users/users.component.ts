@@ -14,7 +14,8 @@ export class UsersComponent {
   modifyingUser: User;
   creating: boolean = false;
 
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService) {}
 
   ngOnInit() {
     this.usersService

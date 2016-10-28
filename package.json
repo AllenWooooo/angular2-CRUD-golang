@@ -1,5 +1,5 @@
 {
-  "name": "lunch-group",
+  "name": "angular-crud-golang",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,8 +9,8 @@
     "build": "rimraf static && webpack --config config/webpack.prod.js --progress --profile --bail",
     "postinstall": "typings install"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Allen Wu <mangong33@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "@angular/common": "^2.1.0",
     "@angular/compiler": "^2.1.0",
